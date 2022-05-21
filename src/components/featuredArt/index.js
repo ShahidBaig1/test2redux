@@ -4,10 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getFeaturedArts } from "../../features/featuredArts/action";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { makeStyles } from "@material-ui/core/styles";
+import { useNavigate } from "react-router-dom";
 
 function FeaturedArt() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleNav = (item) => {
+    navigate(`/${item}`);
+  };
 
   const {
     getFeatured: { featuredArts, artsLoading },
@@ -44,7 +49,14 @@ function FeaturedArt() {
                             alt="creator"
                           />
                         </span>
-                        <span>@ {item.owner_name}</span>
+                        <span
+                          onClick={() => {
+                            handleNav(item.username);
+                          }}
+                          style={{ cursor: "pointer" }}
+                        >
+                          @ {item.owner_name}
+                        </span>
                       </Box>
                       <Box>
                         <Typography className={classes.forartName} variant="h4">
@@ -71,7 +83,14 @@ function FeaturedArt() {
                                 alt="creator"
                               />
                             </span>
-                            <span>@ {item.owner_name}</span>
+                            <span
+                              onClick={() => {
+                                handleNav(item.creator_name);
+                              }}
+                              style={{ cursor: "pointer" }}
+                            >
+                              @ {item.owner_name}
+                            </span>
                           </Box>
                         </Box>
                       </Box>
@@ -99,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     // justifyContent: "space-evenly",
     marginTop: 10,
-    border: "1px solid black",
+    // border: "1px solid black",
     width: "100%",
     paddingTop: 50,
   },

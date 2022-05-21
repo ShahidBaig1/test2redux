@@ -16,10 +16,10 @@ export default function Routers() {
       <BrowserRouter>
         <Header />
         <Routes>
-        <Route path="/home" exact element={<Home />} />
+          <Route path="/home" exact element={<Home />} />
           <Route path="/market" exact element={<Market />} />
           <Route path="/artists" exact element={<Artist />} />
-          <Route path="/aboutUs" exact element={<AboutUs />} />
+          <Route path="/:creatorName" exact element={<AboutUs />} />
           <Route path="/blog" exact element={<Blog />} />
           <Route path="/faq" exact element={<Faqs />} />
           <Route path="/register" exact element={<Register />} />
